@@ -1,0 +1,16 @@
+kind = "DojoModel"
+class_hash = "0x6068dab321633d0a86fa39456475ec3c62253a69c306ecfb347d7e28fd7f865"
+original_class_hash = "0x6068dab321633d0a86fa39456475ec3c62253a69c306ecfb347d7e28fd7f865"
+abi = "manifests/dev/base/abis/models/ok-Moved-5cd98501.json"
+tag = "ok-Moved"
+manifest_name = "ok-Moved-5cd98501"
+
+[[members]]
+name = "player"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "amt"
+type = "u8"
+key = false

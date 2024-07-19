@@ -1,0 +1,21 @@
+kind = "DojoModel"
+class_hash = "0x339d7ca0f876aa79431613c83c995daafb26fdc5fad7b28655b359da0fb5d61"
+original_class_hash = "0x339d7ca0f876aa79431613c83c995daafb26fdc5fad7b28655b359da0fb5d61"
+abi = "manifests/dev/base/abis/models/ok-Position-54881f2f.json"
+tag = "ok-Position"
+manifest_name = "ok-Position-54881f2f"
+
+[[members]]
+name = "game_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "player"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "tile"
+type = "u8"
+key = false

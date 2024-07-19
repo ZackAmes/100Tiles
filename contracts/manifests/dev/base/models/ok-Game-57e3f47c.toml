@@ -1,0 +1,31 @@
+kind = "DojoModel"
+class_hash = "0x42bffd6cf781a7848ac10e4e97b1e64c35c56974fac28f0b90142c22a8d73cd"
+original_class_hash = "0x42bffd6cf781a7848ac10e4e97b1e64c35c56974fac28f0b90142c22a8d73cd"
+abi = "manifests/dev/base/abis/models/ok-Game-57e3f47c.json"
+tag = "ok-Game"
+manifest_name = "ok-Game-57e3f47c"
+
+[[members]]
+name = "game_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "players"
+type = "Span<ContractAddress>"
+key = false
+
+[[members]]
+name = "tile_length"
+type = "u8"
+key = false
+
+[[members]]
+name = "turn_player"
+type = "ContractAddress"
+key = false
+
+[[members]]
+name = "status"
+type = "Status"
+key = false
