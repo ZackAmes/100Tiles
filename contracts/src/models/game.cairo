@@ -1,17 +1,17 @@
 use starknet::ContractAddress;
 
-#[derive(Copy, Drop, Serde)]
+#[derive(Drop, Serde)]
 #[dojo::model]
 struct Game {
     #[key]
     game_id: u32,
-    players: Span<ContractAddress>,
+    players: Array<ContractAddress>,
     tile_length: u8,
     turn_player: ContractAddress,
     status: Status
 }
 
-#[derive(Copy, Drop, Serde, Introspect)]
+#[derive(Copy, Drop, Serde, Introspect, PartialEq)]
 enum Status {
     Pending, 
     Active,

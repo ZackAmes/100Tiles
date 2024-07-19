@@ -3,6 +3,9 @@
 trait IActions {
     fn spawn(ref world: IWorldDispatcher);
     fn move(ref world: IWorldDispatcher);
+    fn create_game(ref world: IWorldDispatcher);
+    fn join_game(ref world: IWorldDispatcher, game_id:u32);
+    fn start_game(ref world: IWorldDispatcher, game_id: u32);
 }
 
 // dojo decorator
@@ -26,13 +29,57 @@ mod actions {
 
     #[abi(embed_v0)]
     impl ActionsImpl of IActions<ContractState> {
+
+        fn create_game(ref world: IWorldDispatcher) {
+            let player = get_caller_address();
+            let game_id = world.uuid();
+            let players = array![player];
+            let status = Status::Pending;
+
+            let game = Game {game_id, players, tile_length: 100, turn_player:player, status};
+            let position = Position {game_id, player, tile:1};
+            set!(world, (game, position));
+        }
+
+        fn join_game(ref world: IWorldDispatcher, game_id: u32) {
+            let player = get_caller_address();
+
+            let mut game = get!(world, game_id, (Game));
+            assert!(game.status == Status::Pending, "Game not joinable");
+
+            let mut position = get!(world, (game_id, player), Position);
+            assert!(position.tile == 0, "Already joined");
+
+            game.players.append(player);
+            position.tile = 1;
+
+            set!(world, (game, position));
+
+        }
+
+        fn start_game(ref world: IWorldDispatcher, game_id: u32) {
+
+            let player = get_caller_address();
+            let mut game = get!(world, game_id, Game);
+
+            assert!(game.status == Status::Pending, "Game already started");
+            
+            assert!(game.turn_player == player, "Not lobby creator");
+
+            game.status = Status::Active;
+
+            set!(world, (game));
+
+
+        }
+
         fn spawn(ref world: IWorldDispatcher) {
             let player = get_caller_address();
             let mut game = get!(world, 0, (Game));
 
-            game.players = array![player].span();
+            game.players = array![player];
             game.status = Status::Active;
-            let position = Position { game_id: 0, player, tile: 0};
+            let position = Position { game_id: 0, player, tile: 1};
 
             set!(world, (game, position));
 

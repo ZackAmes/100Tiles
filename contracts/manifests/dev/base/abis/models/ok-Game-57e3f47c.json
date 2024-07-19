@@ -367,16 +367,6 @@
     "interface_name": "dojo_starter::models::game::Igame"
   },
   {
-    "type": "struct",
-    "name": "core::array::Span::<core::starknet::contract_address::ContractAddress>",
-    "members": [
-      {
-        "name": "snapshot",
-        "type": "@core::array::Array::<core::starknet::contract_address::ContractAddress>"
-      }
-    ]
-  },
-  {
     "type": "enum",
     "name": "dojo_starter::models::game::Status",
     "variants": [
@@ -404,7 +394,7 @@
       },
       {
         "name": "players",
-        "type": "core::array::Span::<core::starknet::contract_address::ContractAddress>"
+        "type": "core::array::Array::<core::starknet::contract_address::ContractAddress>"
       },
       {
         "name": "tile_length",
