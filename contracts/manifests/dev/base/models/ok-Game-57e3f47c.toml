@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x35d5e2f1089cc2f5d47b8a864748f2e3bc2675700da755b38f3683d13ce7bed"
-original_class_hash = "0x35d5e2f1089cc2f5d47b8a864748f2e3bc2675700da755b38f3683d13ce7bed"
+class_hash = "0x609ed9c10f049d2343977d8bd4880a1834a7a256fd8f94834d251ac3ca02cf0"
+original_class_hash = "0x609ed9c10f049d2343977d8bd4880a1834a7a256fd8f94834d251ac3ca02cf0"
 abi = "manifests/dev/base/abis/models/ok-Game-57e3f47c.json"
 tag = "ok-Game"
 manifest_name = "ok-Game-57e3f47c"

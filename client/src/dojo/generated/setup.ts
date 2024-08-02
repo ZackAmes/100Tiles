@@ -3,9 +3,9 @@ import { DojoConfig, DojoProvider } from "@dojoengine/core";
 import * as torii from "@dojoengine/torii-client";
 import { createClientComponents } from "../createClientComponents";
 import { createSystemCalls } from "../createSystemCalls";
-import { defineContractComponents } from "./contractComponents";
+import { defineContractComponents } from "./models.gen";
 import { world } from "./world";
-import { setupWorld } from "./generated";
+import { setupWorld } from "./contracts.gen";
 import { Account, WeierstrassSignatureType } from "starknet";
 import { BurnerManager } from "@dojoengine/create-burner";
 
@@ -13,7 +13,7 @@ export type SetupResult = Awaited<ReturnType<typeof setup>>;
 
 export async function setup({ ...config }: DojoConfig) {
     // torii client
-    const toriiClient = await torii.createClient([], {
+    const toriiClient = await torii.createClient({
         rpcUrl: config.rpcUrl,
         toriiUrl: config.toriiUrl,
         relayUrl: "",
@@ -27,11 +27,15 @@ export async function setup({ ...config }: DojoConfig) {
     const clientComponents = createClientComponents({ contractComponents });
 
     // fetch all existing entities from torii
-    const sync = await getSyncEntities(
-        toriiClient,
-        contractComponents as any,
-        []
-    );
+    const sync = await getSyncEntities(toriiClient, contractComponents as any, [
+		{
+			Keys: {
+				keys: [BigInt(burnerManager.account.address).toString()],
+				models: ['dojo_starter-Player'],
+				pattern_matching: 'FixedLen',
+			},
+		},
+	]);
 
     // create dojo provider
     const dojoProvider = new DojoProvider(config.manifest, config.rpcUrl);

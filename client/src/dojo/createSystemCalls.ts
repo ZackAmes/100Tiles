@@ -4,15 +4,14 @@ import { uuid } from "@latticexyz/utils";
 import { ClientComponents } from "./createClientComponents";
 import { Direction, updatePositionWithDirection } from "../utils";
 import { getEntityIdFromKeys } from "@dojoengine/utils";
-import { ContractComponents } from "./generated/contractComponents";
-import type { IWorld } from "./generated/generated";
-
+import { ContractComponents } from "./generated/models.gen";
+import { IWorld } from "./generated/contracts.gen";
 export type SystemCalls = ReturnType<typeof createSystemCalls>;
 
 export function createSystemCalls(
     { client }: { client: IWorld },
     _contractComponents: ContractComponents,
-    { Position, Moves }: ClientComponents
+    { Position, Game }: ClientComponents
 ) {
     const spawn = async (account: AccountInterface) => {
         try {
@@ -62,7 +61,6 @@ export function createSystemCalls(
         try {
             const { transaction_hash } = await client.actions.move({
                 account,
-                direction,
             });
 
             await account.waitForTransaction(transaction_hash, {

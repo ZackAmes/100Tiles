@@ -1,0 +1,21 @@
+kind = "DojoModel"
+class_hash = "0x2fb5699e10c7e793cfb9562d276225e4d564b416e8bb3a2dc3116bf0ddf2019"
+original_class_hash = "0x2fb5699e10c7e793cfb9562d276225e4d564b416e8bb3a2dc3116bf0ddf2019"
+abi = "manifests/dev/base/abis/models/ok-Tile-fcb463a2.json"
+tag = "ok-Tile"
+manifest_name = "ok-Tile-fcb463a2"
+
+[[members]]
+name = "game_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "number"
+type = "u8"
+key = true
+
+[[members]]
+name = "effect"
+type = "Effect"
+key = false

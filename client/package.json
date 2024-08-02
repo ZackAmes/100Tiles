@@ -8,10 +8,10 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "create-components": "npx @dojoengine/core ../../dojo-starter/manifests/dev/manifest.json src/dojo/generated/contractComponents.ts http://localhost:5050 0xb4079627ebab1cd3cf9fd075dda1ad2454a7a448bf659591f259efa2519b18"
+    "create-components": "npx @dojoengine/core ../contracts/manifests/dev/manifest.json src/dojo/generated/contractComponents.ts http://localhost:5050 0xf4f91f2fc7615a81b1e20cd69b66a3a6f84ef65889e3b55c371dd5cc8a8f9b"
   },
   "dependencies": {
-    "@dojoengine/core": "0.7.10-alpha.0",
+    "@dojoengine/core": "^1.0.0-alpha.0",
     "@dojoengine/create-burner": "0.7.10-alpha.0",
     "@dojoengine/react": "0.7.10-alpha.0",
     "@dojoengine/recs": "2.0.13",
