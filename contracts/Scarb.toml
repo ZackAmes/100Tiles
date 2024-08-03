@@ -13,7 +13,7 @@ move = "./scripts/move.sh"
 
 [dependencies]
 dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.0.0-alpha.4" }
-#origami = { git = "https://github.com/dojoengine/origami", branch = "1.0.0-alpha.1"}
+#origami = { git = "https://github.com/dojoengine/origami.git", branch = "1.0.0-alpha.1"}
 [[target.dojo]]
 
 [tool.dojo]

@@ -1,5 +1,6 @@
 mod systems {
     mod actions;
+    mod matchmaking;
 }
 
 mod models {
