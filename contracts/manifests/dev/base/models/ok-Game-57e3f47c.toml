@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x609ed9c10f049d2343977d8bd4880a1834a7a256fd8f94834d251ac3ca02cf0"
-original_class_hash = "0x609ed9c10f049d2343977d8bd4880a1834a7a256fd8f94834d251ac3ca02cf0"
+class_hash = "0x6e4ccdf50299459ab22f5ea0e5298a57ff2db58cc0e77c5805c1d8c719c8ead"
+original_class_hash = "0x6e4ccdf50299459ab22f5ea0e5298a57ff2db58cc0e77c5805c1d8c719c8ead"
 abi = "manifests/dev/base/abis/models/ok-Game-57e3f47c.json"
 tag = "ok-Game"
 manifest_name = "ok-Game-57e3f47c"
@@ -28,4 +28,9 @@ key = false
 [[members]]
 name = "status"
 type = "Status"
+key = false
+
+[[members]]
+name = "phase"
+type = "TurnPhase"
 key = false

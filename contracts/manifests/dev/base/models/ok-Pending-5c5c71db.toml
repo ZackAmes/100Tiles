@@ -1,0 +1,21 @@
+kind = "DojoModel"
+class_hash = "0x52dc797642775f17c4cb0dcb016635011576a8610c9730418654d681263e51c"
+original_class_hash = "0x52dc797642775f17c4cb0dcb016635011576a8610c9730418654d681263e51c"
+abi = "manifests/dev/base/abis/models/ok-Pending-5c5c71db.json"
+tag = "ok-Pending"
+manifest_name = "ok-Pending-5c5c71db"
+
+[[members]]
+name = "game_id"
+type = "u32"
+key = true
+
+[[members]]
+name = "player"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "effect"
+type = "Effect"
+key = false

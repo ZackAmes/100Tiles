@@ -13,7 +13,7 @@ mod matchmaking {
     use super::{IMatchmaking};
     use starknet::{ContractAddress, get_caller_address, get_block_timestamp};
     use dojo_starter::models::{
-        position::{Position}, game::{Game, Status}
+        position::{Position}, game::{Game, Status, TurnPhase}
     };
 
     #[abi(embed_v0)]
@@ -23,8 +23,9 @@ mod matchmaking {
             let game_id = world.uuid();
             let players = array![player];
             let status = Status::Pending;
+            let phase = TurnPhase::Standby;
 
-            let game = Game {game_id, players, tile_length: 100, turn_player:player, status};
+            let game = Game {game_id, players, tile_length: 100, turn_player:player, status, phase};
             let position = Position {game_id, player, tile:1};
             set!(world, (game, position));
             game_id
