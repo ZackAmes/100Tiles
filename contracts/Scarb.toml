@@ -24,7 +24,7 @@ rpc_url = "http://localhost:5050/"
 # Default account for katana with seed = 0
 account_address = "0xb3ff441a68610b30fd5e2abbf3a1548eb6ba6f3559f2862bf2dc757e5828ca"
 private_key = "0x2bbf4f9fd0bbb2e60b0316c1fe0b76cf7a4d0198bd493ced9b8df2a3a24d68a"
-world_address = "0x1b181f18e4ad27da5b9427870b0a48914713ba36a095b255c0e5a3ddd5ab93"  # Uncomment and update this line with your world address.
+world_address = "0x7edc03fa74b04f6157736a72b483e91c2f6ce36c4f9bd2434bca25165b60cae"  # Uncomment and update this line with your world address.
 
 [tool.dojo.world]
 name = "Dojo starter"

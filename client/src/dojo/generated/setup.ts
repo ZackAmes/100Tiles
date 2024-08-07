@@ -27,7 +27,6 @@ export async function setup({ ...config }: DojoConfig) {
     const clientComponents = createClientComponents({ contractComponents });
 
     // fetch all existing entities from torii
-    const sync = await getSyncEntities(toriiClient, contractComponents as any,[] );
 
     // create dojo provider
     const dojoProvider = new DojoProvider(config.manifest, config.rpcUrl);
@@ -45,7 +44,6 @@ export async function setup({ ...config }: DojoConfig) {
             config.masterPrivateKey
         ),
         accountClassHash: config.accountClassHash,
-        /*@ts-ignore*/
         rpcProvider: dojoProvider.provider,
         feeTokenAddress: config.feeTokenAddress,
     });
@@ -63,11 +61,7 @@ export async function setup({ ...config }: DojoConfig) {
         client,
         clientComponents,
         contractComponents,
-        systemCalls: createSystemCalls(
-            { client },
-            contractComponents,
-            clientComponents
-        ),
+        systemCalls: createSystemCalls({ client }, clientComponents, world),
         publish: (typedData: string, signature: WeierstrassSignatureType) => {
             toriiClient.publishMessage(typedData, {
                 r: signature.r.toString(),
@@ -78,6 +72,6 @@ export async function setup({ ...config }: DojoConfig) {
         dojoProvider,
         burnerManager,
         toriiClient,
-        sync,
+        // sync,
     };
 }

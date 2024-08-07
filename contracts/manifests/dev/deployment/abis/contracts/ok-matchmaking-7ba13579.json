@@ -128,30 +128,27 @@
   },
   {
     "type": "impl",
-    "name": "ActionsImpl",
-    "interface_name": "dojo_starter::systems::actions::IActions"
-  },
-  {
-    "type": "enum",
-    "name": "core::bool",
-    "variants": [
-      {
-        "name": "False",
-        "type": "()"
-      },
-      {
-        "name": "True",
-        "type": "()"
-      }
-    ]
+    "name": "matchmakingImpl",
+    "interface_name": "dojo_starter::systems::matchmaking::IMatchmaking"
   },
   {
     "type": "interface",
-    "name": "dojo_starter::systems::actions::IActions",
+    "name": "dojo_starter::systems::matchmaking::IMatchmaking",
     "items": [
       {
         "type": "function",
-        "name": "move",
+        "name": "create_game",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "core::integer::u32"
+          }
+        ],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "join_game",
         "inputs": [
           {
             "name": "game_id",
@@ -163,31 +160,11 @@
       },
       {
         "type": "function",
-        "name": "resolve_turn",
+        "name": "start_game",
         "inputs": [
           {
             "name": "game_id",
             "type": "core::integer::u32"
-          }
-        ],
-        "outputs": [],
-        "state_mutability": "external"
-      },
-      {
-        "type": "function",
-        "name": "set_pending_effect",
-        "inputs": [
-          {
-            "name": "game_id",
-            "type": "core::integer::u32"
-          },
-          {
-            "name": "direction",
-            "type": "core::bool"
-          },
-          {
-            "name": "amt",
-            "type": "core::integer::u8"
           }
         ],
         "outputs": [],
@@ -198,11 +175,11 @@
   {
     "type": "impl",
     "name": "IDojoInitImpl",
-    "interface_name": "dojo_starter::systems::actions::actions::IDojoInit"
+    "interface_name": "dojo_starter::systems::matchmaking::matchmaking::IDojoInit"
   },
   {
     "type": "interface",
-    "name": "dojo_starter::systems::actions::actions::IDojoInit",
+    "name": "dojo_starter::systems::matchmaking::matchmaking::IDojoInit",
     "items": [
       {
         "type": "function",
@@ -262,7 +239,7 @@
   },
   {
     "type": "event",
-    "name": "dojo_starter::systems::actions::actions::Event",
+    "name": "dojo_starter::systems::matchmaking::matchmaking::Event",
     "kind": "enum",
     "variants": [
       {

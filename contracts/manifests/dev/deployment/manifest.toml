@@ -1,10 +1,10 @@
 [world]
 kind = "WorldContract"
-class_hash = "0x32fb65ebfe6d91bb4b7ba0640650722c43ca0c917f5fc0f649ee2ecf720cde"
-original_class_hash = "0x32fb65ebfe6d91bb4b7ba0640650722c43ca0c917f5fc0f649ee2ecf720cde"
+class_hash = "0x2178527e9556d1aa21d3c2961d28f9114fcfed81b4c3674ed591c50ce46cc9d"
+original_class_hash = "0x2178527e9556d1aa21d3c2961d28f9114fcfed81b4c3674ed591c50ce46cc9d"
 abi = "manifests/dev/deployment/abis/dojo-world.json"
-address = "0x1b181f18e4ad27da5b9427870b0a48914713ba36a095b255c0e5a3ddd5ab93"
-transaction_hash = "0x5db10c0d8626129491eee4b9fea9ced4c924bb5c3feaf2cebdec84c3b753744"
+address = "0x7edc03fa74b04f6157736a72b483e91c2f6ce36c4f9bd2434bca25165b60cae"
+transaction_hash = "0x46ec3fe32efbad814e451593f85741bc443773886fd55a2748ab0c7bfd5c72c"
 block_number = 3
 seed = "nomic"
 manifest_name = "dojo-world"
@@ -23,9 +23,9 @@ manifest_name = "dojo-base"
 
 [[contracts]]
 kind = "DojoContract"
-address = "0x7b86f04e2af95bd014224f61fbf8f70e6d4a8dd097addd139cfc0612a5dea8d"
-class_hash = "0x3fd0175c39e7c8547c92ef36d1382685a5c9b9d4a7e23ea5f6b6d194cd5c4eb"
-original_class_hash = "0x3fd0175c39e7c8547c92ef36d1382685a5c9b9d4a7e23ea5f6b6d194cd5c4eb"
+address = "0xe320a6567a4f0fc7808d52dcb665f6cd335a81cb1b1cfb02557597396e0c91"
+class_hash = "0x28365daa30401c61eca076085fb95c71f1955594ca6013fe6232ef6e8e08c9d"
+original_class_hash = "0x28365daa30401c61eca076085fb95c71f1955594ca6013fe6232ef6e8e08c9d"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/ok-actions-27182f10.json"
 reads = []
@@ -35,10 +35,24 @@ init_calldata = []
 tag = "ok-actions"
 manifest_name = "ok-actions-27182f10"
 
+[[contracts]]
+kind = "DojoContract"
+address = "0x13e61fed2c19b63f5073fd220f42d8be19f776c252069607e0f647d1302987b"
+class_hash = "0x35fa6e86e6a9df89a94240bfb2e21c9409ffd2abede1b8e6ab7ba010a0fd54"
+original_class_hash = "0x35fa6e86e6a9df89a94240bfb2e21c9409ffd2abede1b8e6ab7ba010a0fd54"
+base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/dev/deployment/abis/contracts/ok-matchmaking-7ba13579.json"
+reads = []
+writes = []
+computed = []
+init_calldata = []
+tag = "ok-matchmaking"
+manifest_name = "ok-matchmaking-7ba13579"
+
 [[models]]
 kind = "DojoModel"
-class_hash = "0x609ed9c10f049d2343977d8bd4880a1834a7a256fd8f94834d251ac3ca02cf0"
-original_class_hash = "0x609ed9c10f049d2343977d8bd4880a1834a7a256fd8f94834d251ac3ca02cf0"
+class_hash = "0x6e4ccdf50299459ab22f5ea0e5298a57ff2db58cc0e77c5805c1d8c719c8ead"
+original_class_hash = "0x6e4ccdf50299459ab22f5ea0e5298a57ff2db58cc0e77c5805c1d8c719c8ead"
 abi = "manifests/dev/deployment/abis/models/ok-Game-57e3f47c.json"
 tag = "ok-Game"
 manifest_name = "ok-Game-57e3f47c"
@@ -68,6 +82,11 @@ name = "status"
 type = "Status"
 key = false
 
+[[models.members]]
+name = "phase"
+type = "TurnPhase"
+key = false
+
 [[models]]
 kind = "DojoModel"
 class_hash = "0x19e278ad11928dbb06799467aebf6caf3687766c3443c5f564fb57f23671bb5"
@@ -84,6 +103,29 @@ key = true
 [[models.members]]
 name = "amt"
 type = "u8"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x52dc797642775f17c4cb0dcb016635011576a8610c9730418654d681263e51c"
+original_class_hash = "0x52dc797642775f17c4cb0dcb016635011576a8610c9730418654d681263e51c"
+abi = "manifests/dev/deployment/abis/models/ok-Pending-5c5c71db.json"
+tag = "ok-Pending"
+manifest_name = "ok-Pending-5c5c71db"
+
+[[models.members]]
+name = "game_id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "player"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "effect"
+type = "Effect"
 key = false
 
 [[models]]
