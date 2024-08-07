@@ -42,8 +42,9 @@ mod actions {
             let res = dice.roll();
 
             position.tile += res;
+            game.phase = TurnPhase::Resolving;
 
-            set!(world, (position));
+            set!(world, (game, position));
 
             emit!(world, (Moved { player, amt: res }));
         }
@@ -71,9 +72,6 @@ mod actions {
             }
 
             set!(world, (tile, position));
-
-
-
 
         }
 

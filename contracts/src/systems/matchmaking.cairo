@@ -27,7 +27,9 @@ mod matchmaking {
 
             let game = Game {game_id, players, tile_length: 100, turn_player:player, status, phase};
             let position = Position {game_id, player, tile:1};
+            
             set!(world, (game, position));
+
             game_id
         }
 
