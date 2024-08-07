@@ -10,6 +10,16 @@ struct Position {
     tile: u8,
 }
 
+#[derive(Copy, Drop, Serde)]
+#[dojo::model]
+struct Pending {
+    #[key]
+    game_id: u32,
+    #[key]
+    player: ContractAddress,
+    effect: Effect
+}
+
 #[derive(Drop, Serde)]
 #[dojo::model]
 struct Tile {
@@ -27,3 +37,21 @@ enum Effect {
     Forward: u8,
     Backward: u8
 }
+
+#[generate_trait]
+impl EffectImpl of EffectTrait {
+    fn move(direction: bool, amt: u8) -> Effect{
+        if direction {
+            Effect::Forward(amt)
+        }
+        else {
+            Effect::Backward(amt)
+        }
+
+    }
+}
+
+
+
+
+
