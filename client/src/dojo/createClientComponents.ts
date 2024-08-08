@@ -14,5 +14,6 @@ export function createClientComponents({
         Game: overridableComponent(contractComponents.Game),
         Tile: overridableComponent(contractComponents.Tile),
         Pending: overridableComponent(contractComponents.Pending),
+        Moved: overridableComponent(contractComponents.Moved)
     };
 }

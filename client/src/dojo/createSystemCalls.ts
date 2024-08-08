@@ -21,7 +21,7 @@ export function createSystemCalls(
 ) {
    
 
-    const move = async (account: AccountInterface) => {
+    const move = async (account: AccountInterface, game_id: number) => {
         const entityId = getEntityIdFromKeys([
             BigInt(account.address),
         ]) as Entity;
@@ -32,6 +32,7 @@ export function createSystemCalls(
         try {
             await client.actions.move({
                 account,
+                game_id
             });
 
         } catch (e) {
@@ -42,7 +43,54 @@ export function createSystemCalls(
         }
     };
 
+    const join_game = async (account: AccountInterface, game_id: number) => {
+        const entityId = getEntityIdFromKeys([
+            BigInt(account.address),
+        ]) as Entity;
+
+        // Update the state before the transaction
+        const positionId = uuid();
+
+        try {
+            await client.matchmaking.join_game({
+                account,
+                game_id
+            });
+
+        } catch (e) {
+            console.log(e);
+            Position.removeOverride(positionId);
+        } finally {
+            Position.removeOverride(positionId);
+        }
+    };
+
+    const create_game = async (account: AccountInterface) => {
+        try {
+            await client.matchmaking.create_game({
+                account,
+            });
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    const start_game = async (account: AccountInterface, game_id: number) => {
+        try {
+            await client.matchmaking.start_game({
+                account,
+                game_id
+            });
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     return {
+        create_game,
+        join_game,
+        start_game,
         move,
     };
 }
