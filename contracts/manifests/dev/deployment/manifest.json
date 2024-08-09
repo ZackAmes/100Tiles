@@ -1522,7 +1522,13 @@
         }
       ],
       "reads": [],
-      "writes": [],
+      "writes": [
+        "ok-Game",
+        "ok-Position",
+        "ok-Tile",
+        "ok-Pending",
+        "ok-Moved"
+      ],
       "computed": [],
       "init_calldata": [],
       "tag": "ok-actions",
@@ -1787,7 +1793,10 @@
         }
       ],
       "reads": [],
-      "writes": [],
+      "writes": [
+        "ok-Game",
+        "ok-Position"
+      ],
       "computed": [],
       "init_calldata": [],
       "tag": "ok-matchmaking",

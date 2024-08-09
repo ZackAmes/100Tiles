@@ -29,7 +29,13 @@ original_class_hash = "0x28365daa30401c61eca076085fb95c71f1955594ca6013fe6232ef6
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/ok-actions-27182f10.json"
 reads = []
-writes = []
+writes = [
+    "ok-Game",
+    "ok-Position",
+    "ok-Tile",
+    "ok-Pending",
+    "ok-Moved",
+]
 computed = []
 init_calldata = []
 tag = "ok-actions"
@@ -43,7 +49,10 @@ original_class_hash = "0x35fa6e86e6a9df89a94240bfb2e21c9409ffd2abede1b8e6ab7ba01
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/ok-matchmaking-7ba13579.json"
 reads = []
-writes = []
+writes = [
+    "ok-Game",
+    "ok-Position",
+]
 computed = []
 init_calldata = []
 tag = "ok-matchmaking"
