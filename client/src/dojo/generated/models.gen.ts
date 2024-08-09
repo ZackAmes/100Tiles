@@ -163,7 +163,7 @@ export function defineContractComponents(world: World) {
                 {
                     metadata: {
                         namespace: "ok",
-                        name: "Game",
+                        name: "ok-Game",
                         types: ["u32", "array", "u8", "ContractAddress", "Status", "TurnPhase"],
                         customTypes: [],
                     },
@@ -183,7 +183,7 @@ export function defineContractComponents(world: World) {
                 {
                     metadata: {
                         namespace: "ok",
-                        name: "Pending",
+                        name: "ok-Pending",
                         types: ["u32", "ContractAddress", "Effect"],
                         customTypes: [],
                     },
@@ -203,7 +203,7 @@ export function defineContractComponents(world: World) {
                 {
                     metadata: {
                         namespace: "ok",
-                        name: "Tile",
+                        name: "ok-Tile",
                         types: ["u32", "u8", "Effect"],
                         customTypes: [],
                     },
@@ -222,7 +222,7 @@ export function defineContractComponents(world: World) {
                 {
                     metadata: {
                         namespace: "ok",
-                        name: "Moved",
+                        name: "ok-Moved",
                         types: ["ContractAddress", "u8"],
                         customTypes: [],
                     },
@@ -242,7 +242,7 @@ export function defineContractComponents(world: World) {
                 {
                     metadata: {
                         namespace: "ok",
-                        name: "Position",
+                        name: "ok-Position",
                         types: ["u32", "ContractAddress", "u8"],
                         customTypes: [],
                     },

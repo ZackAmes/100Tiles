@@ -22,7 +22,7 @@ function App() {
             Keys: {
                 keys: [BigInt(0).toString()],
                 models: [
-                    "Game",
+                    "ok-Game",
                 ],
                 pattern_matching: "FixedLen",
             },
@@ -31,7 +31,7 @@ function App() {
             Keys: {
                 keys: [BigInt(0).toString(), BigInt(account?.account.address).toString()],
                 models: [
-                    "Position",
+                    "ok-Position",
                 ],
                 pattern_matching: "FixedLen",
             },
@@ -40,7 +40,7 @@ function App() {
             Keys: {
                 keys: [BigInt(account?.account.address).toString()],
                 models: [
-                    "Moved",
+                    "ok-Moved",
                 ],
                 pattern_matching: "FixedLen",
             },
@@ -48,9 +48,9 @@ function App() {
     ]);
     
 
-    let entityId = getEntityIdFromKeys([BigInt(0), BigInt(account?.account.address)]) as Entity
-    let gameId = getEntityIdFromKeys([BigInt(0)]) as Entity
-    let playerId = getEntityIdFromKeys([BigInt(account?.account.address)]) as Entity
+    const entityId = getEntityIdFromKeys([BigInt(0), BigInt(account?.account.address)]) as Entity
+    const gameId = getEntityIdFromKeys([BigInt(0)]) as Entity
+    const playerId = getEntityIdFromKeys([BigInt(account?.account.address)]) as Entity
 
     // get current component values
     const position = useComponentValue(Position, entityId);
