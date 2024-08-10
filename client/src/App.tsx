@@ -1,9 +1,14 @@
-import "./App.css";
 import { useComponentValue, useQuerySync } from "@dojoengine/react";
 import { Entity } from "@dojoengine/recs";
 import { useEffect, useState } from "react";
 import { getEntityIdFromKeys } from "@dojoengine/utils";
 import { useDojo } from "./dojo/useDojo";
+import { Canvas, useThree } from "@react-three/fiber";
+import { OrbitControls, Plane, Text, Box } from "@react-three/drei";
+import { Root, Container, Text as UIText } from "@react-three/uikit";
+import { Button } from "./components/default/button";
+import { CardDemo } from "./ui/matchmaking";
+import Tile from "./components/general/Tile";
 
 function App() {
     const {
@@ -65,59 +70,22 @@ function App() {
 
     return (
         <>
-            <button onClick={() => account?.create()}>
-                {account?.isDeploying ? "deploying burner" : "create burner"}
-            </button>
+            <Canvas style={{height:800, width:800}}>
+                <OrbitControls />
+                <Text position = {[0,2,2]} color={"black"}> {game? game.players?.at(0)?.toString(16) : "No Game"}</Text>
+                
+                <Root position = {[0,0,5]} backgroundColor="red" sizeX={2} sizeY={1} flexDirection="row">
+                    <Container margin={5} backgroundColor="green" >
+                        <CardDemo />
+                    </Container>
+                    
+                    <Container flexGrow={1} margin={5} backgroundColor="blue" />
+                </Root>
 
-            <div className="card">
-                <div>{`burners deployed: ${account.count}`}</div>
-                <div>
-                    select signer:{" "}
-                    <select
-                        value={account ? account.account.address : ""}
-                        onChange={(e) => account.select(e.target.value)}
-                    >
-                        {account?.list().map((account, index) => {
-                            return (
-                                <option value={account.address} key={index}>
-                                    {account.address}
-                                </option>
-                            );
-                        })}
-                    </select>
-                </div>
-                <div>
-                    <button onClick={() => account.clear()}>
-                        Clear burners
-                    </button>
-                    <p>
-                        You will need to Authorise the contracts before you can
-                        use a burner. See readme.
-                    </p>
-                </div>
-                <div>
-                    <button onClick={() => create_game(account.account)}>
-                        Create Game
-                    </button>
-                </div>
+                <Box args={[10,.1,10]} position={[0,-5,0]} rotation={[0,Math.PI/2,0]}/>
+                <Tile position={[0,-4.9, 0]} effect={{direction:true, amt:5}}/>
 
-                <div>
-                    <button onClick={() => start_game(account.account, 0)}>
-                        Start Game 0
-                    </button>
-                </div>
-
-                <div>
-                    <button onClick={() => join_game(account.account, 0)}>
-                        Join Game 0
-                    </button>
-                </div>
-                <div>
-                    <button onClick={() => move(account.account, 0)}>
-                        Move
-                    </button>
-                </div>
-            </div>
+            </Canvas>
 
         </>
     );
