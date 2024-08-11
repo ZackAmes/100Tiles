@@ -7,7 +7,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, Plane, Text, Box } from "@react-three/drei";
 import { Root, Container, Text as UIText } from "@react-three/uikit";
 import { Button } from "./components/default/button";
-import { CardDemo } from "./ui/matchmaking";
+import { Matchmaking } from "./ui/matchmaking";
 import Tile from "./components/general/Tile";
 
 function App() {
@@ -76,7 +76,7 @@ function App() {
                 
                 <Root position = {[0,0,5]} backgroundColor="red" sizeX={2} sizeY={1} flexDirection="row">
                     <Container margin={5} backgroundColor="green" >
-                        <CardDemo />
+                        <Matchmaking />
                     </Container>
                     
                     <Container flexGrow={1} margin={5} backgroundColor="blue" />
