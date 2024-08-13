@@ -1,11 +1,10 @@
 kind = "DojoContract"
-class_hash = "0x28365daa30401c61eca076085fb95c71f1955594ca6013fe6232ef6e8e08c9d"
-original_class_hash = "0x28365daa30401c61eca076085fb95c71f1955594ca6013fe6232ef6e8e08c9d"
+class_hash = "0x360018297e3304ebeb919f49378f8f437a28c0bc6034c8c9e48c23295ef57bb"
+original_class_hash = "0x360018297e3304ebeb919f49378f8f437a28c0bc6034c8c9e48c23295ef57bb"
 base_class_hash = "0x0"
 abi = "manifests/dev/base/abis/contracts/ok-actions-27182f10.json"
 reads = []
 writes = []
-computed = []
 init_calldata = []
 tag = "ok-actions"
 manifest_name = "ok-actions-27182f10"

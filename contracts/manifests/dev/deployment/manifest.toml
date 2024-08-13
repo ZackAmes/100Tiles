@@ -1,12 +1,12 @@
 [world]
 kind = "WorldContract"
-class_hash = "0x2178527e9556d1aa21d3c2961d28f9114fcfed81b4c3674ed591c50ce46cc9d"
-original_class_hash = "0x2178527e9556d1aa21d3c2961d28f9114fcfed81b4c3674ed591c50ce46cc9d"
+class_hash = "0x76ced5a15cb43c7be7176cff4779cd57c56638a46ddf2c9da709d22298c5e5a"
+original_class_hash = "0x76ced5a15cb43c7be7176cff4779cd57c56638a46ddf2c9da709d22298c5e5a"
 abi = "manifests/dev/deployment/abis/dojo-world.json"
-address = "0x7edc03fa74b04f6157736a72b483e91c2f6ce36c4f9bd2434bca25165b60cae"
-transaction_hash = "0x46ec3fe32efbad814e451593f85741bc443773886fd55a2748ab0c7bfd5c72c"
+address = "0x42e172247714a480a40121c97c13acb1338e6cc8948b5ae23f5d7d53cd26338"
+transaction_hash = "0x27be65ab7dbbeee4fc4c4385a7ce882ba6ad38766f0b53904a7a989d94abf22"
 block_number = 3
-seed = "nomic"
+seed = "dojo_examples"
 manifest_name = "dojo-world"
 
 [world.metadata]
@@ -23,9 +23,9 @@ manifest_name = "dojo-base"
 
 [[contracts]]
 kind = "DojoContract"
-address = "0xe320a6567a4f0fc7808d52dcb665f6cd335a81cb1b1cfb02557597396e0c91"
-class_hash = "0x28365daa30401c61eca076085fb95c71f1955594ca6013fe6232ef6e8e08c9d"
-original_class_hash = "0x28365daa30401c61eca076085fb95c71f1955594ca6013fe6232ef6e8e08c9d"
+address = "0x46e6c059917c1024b714d472d4c93e53e45a151066557847fe5d0183a9186a3"
+class_hash = "0x360018297e3304ebeb919f49378f8f437a28c0bc6034c8c9e48c23295ef57bb"
+original_class_hash = "0x360018297e3304ebeb919f49378f8f437a28c0bc6034c8c9e48c23295ef57bb"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/ok-actions-27182f10.json"
 reads = []
@@ -36,16 +36,15 @@ writes = [
     "ok-Pending",
     "ok-Moved",
 ]
-computed = []
 init_calldata = []
 tag = "ok-actions"
 manifest_name = "ok-actions-27182f10"
 
 [[contracts]]
 kind = "DojoContract"
-address = "0x13e61fed2c19b63f5073fd220f42d8be19f776c252069607e0f647d1302987b"
-class_hash = "0x35fa6e86e6a9df89a94240bfb2e21c9409ffd2abede1b8e6ab7ba010a0fd54"
-original_class_hash = "0x35fa6e86e6a9df89a94240bfb2e21c9409ffd2abede1b8e6ab7ba010a0fd54"
+address = "0x5589faeaa71c1912caa46d90c81a864f26cdb4c7f734ccaa650b47e1bad96c"
+class_hash = "0x76290aa2d63988b496363f83af7f14a4fd65e361a17b27fcc81d93882941e04"
+original_class_hash = "0x76290aa2d63988b496363f83af7f14a4fd65e361a17b27fcc81d93882941e04"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/ok-matchmaking-7ba13579.json"
 reads = []
@@ -53,7 +52,6 @@ writes = [
     "ok-Game",
     "ok-Position",
 ]
-computed = []
 init_calldata = []
 tag = "ok-matchmaking"
 manifest_name = "ok-matchmaking-7ba13579"

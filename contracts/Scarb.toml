@@ -1,5 +1,5 @@
 [package]
-cairo-version = "2.7.0-rc.3"
+cairo-version = "2.7.0-rc.4"
 name = "dojo_starter"
 version = "0.7.0"
 
@@ -12,7 +12,7 @@ spawn = "./scripts/spawn.sh"
 move = "./scripts/move.sh"
 
 [dependencies]
-dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.0.0-alpha.4" }
+dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.0.0-alpha.5" }
 #origami = { git = "https://github.com/dojoengine/origami.git", branch = "1.0.0-alpha.1"}
 [[target.dojo]]
 

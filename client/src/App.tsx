@@ -52,7 +52,7 @@ function App() {
         },
     ]);
     
-
+    console.log(account.account.address)
     const entityId = getEntityIdFromKeys([BigInt(0), BigInt(account?.account.address)]) as Entity
     const gameId = getEntityIdFromKeys([BigInt(0)]) as Entity
     const playerId = getEntityIdFromKeys([BigInt(account?.account.address)]) as Entity
@@ -65,8 +65,6 @@ function App() {
     console.log(game);
     console.log(position);
     console.log(moved);
-
-    
 
     return (
         <>

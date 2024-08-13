@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useComponentValue } from '@dojoengine/react';
 import { getEntityIdFromKeys } from '@dojoengine/utils';
 import { useDojo } from '../dojo/useDojo.js';
+import { Entity } from '@dojoengine/recs';
 
 export function Matchmaking() {
 
@@ -17,8 +18,9 @@ export function Matchmaking() {
 } = useDojo();
 
   let [game_id, set_game] = useState(0);
-  let entityId = getEntityIdFromKeys([BigInt(game_id)])
-  let game = useComponentValue(Game, entityId);
+  const gameId = getEntityIdFromKeys([BigInt(0)]) as Entity
+  console.log(game_id);
+  const game = useComponentValue(Game, gameId);
 
   console.log(game);
 
@@ -39,7 +41,7 @@ export function Matchmaking() {
         </Container>
       </CardContent>
       <CardFooter>
-        <Button flexDirection="row" width="100%">
+        <Button flexDirection="row" width="100%" onClick={() => create_game(account.account)}>
           <Text> Join/Start </Text>
         </Button>
       </CardFooter>

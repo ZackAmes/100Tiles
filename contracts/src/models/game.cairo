@@ -1,5 +1,6 @@
 use starknet::ContractAddress;
 use dojo_starter::models::position::{Effect};
+
 #[derive(Drop, Serde)]
 #[dojo::model]
 struct Game {

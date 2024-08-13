@@ -1,11 +1,10 @@
 kind = "DojoContract"
-class_hash = "0x35fa6e86e6a9df89a94240bfb2e21c9409ffd2abede1b8e6ab7ba010a0fd54"
-original_class_hash = "0x35fa6e86e6a9df89a94240bfb2e21c9409ffd2abede1b8e6ab7ba010a0fd54"
+class_hash = "0x76290aa2d63988b496363f83af7f14a4fd65e361a17b27fcc81d93882941e04"
+original_class_hash = "0x76290aa2d63988b496363f83af7f14a4fd65e361a17b27fcc81d93882941e04"
 base_class_hash = "0x0"
 abi = "manifests/dev/base/abis/contracts/ok-matchmaking-7ba13579.json"
 reads = []
 writes = []
-computed = []
 init_calldata = []
 tag = "ok-matchmaking"
 manifest_name = "ok-matchmaking-7ba13579"
