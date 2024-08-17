@@ -7,6 +7,8 @@ mod models {
     mod game;
     mod position;
     mod effect;
+    mod player;
+    mod global;
 }
 
 mod tests {

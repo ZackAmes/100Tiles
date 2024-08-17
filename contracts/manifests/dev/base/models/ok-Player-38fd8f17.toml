@@ -1,0 +1,16 @@
+kind = "DojoModel"
+class_hash = "0x706d2bf1abe651273cc443e41a1d846cce85e6303f174ccccdafbe8a2865b67"
+original_class_hash = "0x706d2bf1abe651273cc443e41a1d846cce85e6303f174ccccdafbe8a2865b67"
+abi = "manifests/dev/base/abis/models/ok-Player-38fd8f17.json"
+tag = "ok-Player"
+manifest_name = "ok-Player-38fd8f17"
+
+[[members]]
+name = "address"
+type = "ContractAddress"
+key = true
+
+[[members]]
+name = "games"
+type = "Array<u32>"
+key = false
