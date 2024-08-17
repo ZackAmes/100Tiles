@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x2fb5699e10c7e793cfb9562d276225e4d564b416e8bb3a2dc3116bf0ddf2019"
-original_class_hash = "0x2fb5699e10c7e793cfb9562d276225e4d564b416e8bb3a2dc3116bf0ddf2019"
+class_hash = "0x45e70ba44841fbc28d8304b54e25ff17429734a2e55b487258fce5d76ebd30c"
+original_class_hash = "0x45e70ba44841fbc28d8304b54e25ff17429734a2e55b487258fce5d76ebd30c"
 abi = "manifests/dev/base/abis/models/ok-Tile-fcb463a2.json"
 tag = "ok-Tile"
 manifest_name = "ok-Tile-fcb463a2"

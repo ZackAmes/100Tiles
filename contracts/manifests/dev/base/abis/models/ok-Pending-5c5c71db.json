@@ -368,7 +368,25 @@
   },
   {
     "type": "enum",
-    "name": "dojo_starter::models::position::Effect",
+    "name": "dojo_starter::models::effect::Target",
+    "variants": [
+      {
+        "name": "None",
+        "type": "()"
+      },
+      {
+        "name": "Landing",
+        "type": "()"
+      },
+      {
+        "name": "Player",
+        "type": "core::starknet::contract_address::ContractAddress"
+      }
+    ]
+  },
+  {
+    "type": "enum",
+    "name": "dojo_starter::models::effect::Effect",
     "variants": [
       {
         "name": "None",
@@ -376,11 +394,15 @@
       },
       {
         "name": "Forward",
-        "type": "core::integer::u8"
+        "type": "(dojo_starter::models::effect::Target, core::integer::u8)"
       },
       {
         "name": "Backward",
-        "type": "core::integer::u8"
+        "type": "(dojo_starter::models::effect::Target, core::integer::u8)"
+      },
+      {
+        "name": "Stun",
+        "type": "(dojo_starter::models::effect::Target, core::integer::u8)"
       }
     ]
   },
@@ -398,7 +420,7 @@
       },
       {
         "name": "effect",
-        "type": "dojo_starter::models::position::Effect"
+        "type": "dojo_starter::models::effect::Effect"
       }
     ]
   },

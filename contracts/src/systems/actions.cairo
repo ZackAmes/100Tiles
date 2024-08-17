@@ -3,8 +3,10 @@
 trait IActions {
     fn move(ref world: IWorldDispatcher, game_id: u32);
     fn resolve_turn(ref world: IWorldDispatcher, game_id: u32);
-    fn set_pending_effect(ref world: IWorldDispatcher, game_id: u32, direction: bool, amt: u8);
+    fn set_pending_effect(ref world: IWorldDispatcher, game_id: u32, effect_id: u8, amt: u8);
 }
+
+
 
 // dojo decorator
 #[dojo::contract]
@@ -12,7 +14,7 @@ mod actions {
     use super::{IActions};
     use starknet::{ContractAddress, get_caller_address, get_block_timestamp};
     use dojo_starter::models::{
-        position::{Position, Pending, Effect, EffectTrait, Tile}, game::{Game, Status, TurnPhase}
+        position::{Position, Pending, Tile}, effect::{Effect, EffectTrait, Target}, game::{Game, Status, TurnPhase}
     };
     use dojo_starter::dice::{Dice, DiceTrait};
 
@@ -59,7 +61,7 @@ mod actions {
             assert!(game.turn_player == player);
             assert!(game.phase == TurnPhase::Resolving, "must move first");
 
-            //TODO IMPORTANT: DO NOT ALLOW INFINITE CYCLES
+            let mut world = world;
 
             if tile.effect == Effect::None {
                 let pending = get!(world, (game_id, player), (Pending));
@@ -67,52 +69,104 @@ mod actions {
             }
             else {
    
-                let next = self.get_tile_result(world, game_id, tile.number);
-                position.tile = next;
+                self.get_tile_result(ref world, game_id, tile.number);
             }
 
             set!(world, (tile, position));
 
         }
 
-        fn set_pending_effect(ref world: IWorldDispatcher, game_id: u32, direction: bool, amt: u8) {
-            let player = get_caller_address();
-
-            let mut game = get!(world, game_id, (Game));
-            let mut position = get!(world, (game_id, player), (Position));
-
-            assert!(game.status == Status::Active, "game not active");
-            assert!(position.tile != 0, "not in game");
+        fn set_pending_effect(ref world: IWorldDispatcher, game_id: u32, effect_id: u8, amt: u8) {
             
+            let player = get_caller_address();
+            let mut game = get!(world, game_id, (Game));
 
-            let effect = EffectTrait::move(direction, amt);
-
+            let effect = EffectTrait::new(effect_id, amt);
+            
             let pending = Pending {game_id, player, effect};
+
             set!(world, (pending));
         }
+
+
+        
     }
 
     #[generate_trait]
     impl Private of PrivateTrait {
-        // 
-        fn get_tile_result(ref self: ContractState, world: IWorldDispatcher, game_id: u32, tile_no: u8) -> u8 {
+        
+        fn get_tile_result(ref self: ContractState, ref world: IWorldDispatcher, game_id: u32, tile_no: u8){
+            
+            let game = get!(world, game_id, (Game));
             let mut tile = get!(world, (game_id, tile_no), (Tile));
-            let mut res = tile_no;
 
-            match tile.effect {
+            self.handle_effects(ref world, game_id, game.turn_player, ref tile.effect);
+ 
+
+
+        }
+
+        fn handle_effects(ref self: ContractState, ref world: IWorldDispatcher, game_id: u32, turn_player:ContractAddress, ref effect: Effect) {
+            
+            let mut game = get!(world, (game_id), (Game));
+            let mut turn_position = get!(world, (game_id, turn_player), (Position));
+
+            match effect {
                 Effect::None => {
+
                 },
-                Effect::Forward(a) => {
-                    assert!(tile_no + a <= 100, "would go past 100");
-                    res = self.get_tile_result(world, game_id, tile_no + a);
+                Effect::Forward((target, amt)) => {
+                    match target {
+                        Target::None => {
+
+                        },
+                        Target::Landing => {
+                            turn_position.tile + amt;
+                        },
+                        Target::Player(addr) => {
+                            let mut target_position  = get!(world, (game_id, addr), (Position));
+                            target_position.tile + amt;
+                            set!(world, (target_position));
+                        }
+
+                    }
                 },
-                Effect::Backward(a) => {
-                    assert!(tile_no - a >= 1, "would go past 1");
-                    res = self.get_tile_result(world, game_id, tile_no - a);
-                }
+                Effect::Backward((target, amt)) => {
+                    match target {
+                        Target::None => {
+
+                        },
+                        Target::Landing => {
+                            turn_position.tile - amt;
+                        },
+                        Target::Player(addr) => {
+                            let target_position  = get!(world, (game_id, addr), (Position));
+                            target_position.tile - amt;
+                            set!(world, (target_position));
+                        }
+
+                    }
+                },   
+                Effect::Stun((target, amt)) => {
+                    match target {
+                        Target::None => {
+
+                        },
+                        Target::Landing => {
+                            let active = effect.update_target(turn_player);
+                            game.active_effects.append(active);
+                        },
+                        Target::Player(addr) => {
+                            let active = effect.update_target(addr);
+                            game.active_effects.append(active);
+                        }
+
+                    }
+                }          
             }
 
-            res
+            set!(world, (game, turn_position));
+
         }
 
     }

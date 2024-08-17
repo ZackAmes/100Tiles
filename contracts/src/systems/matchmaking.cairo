@@ -22,10 +22,11 @@ mod matchmaking {
             let player = get_caller_address();
             let game_id = world.uuid();
             let players = array![player];
+            let active_effects = array![];
             let status = Status::Pending;
             let phase = TurnPhase::Standby;
 
-            let game = Game {game_id, players, tile_length: 100, turn_player:player, status, phase};
+            let game = Game {game_id, players, tile_length: 100, active_effects, turn_player:player, status, phase};
             let position = Position {game_id, player, tile:1};
             
             set!(world, (game, position));

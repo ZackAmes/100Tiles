@@ -1,4 +1,5 @@
 use starknet::ContractAddress;
+use dojo_starter::models::effect::Effect;
 
 #[derive(Copy, Drop, Serde)]
 #[dojo::model]
@@ -29,29 +30,3 @@ struct Tile {
     number: u8,
     effect: Effect
 }
-
-
-#[derive(Copy, Drop, Serde, Introspect, PartialEq)]
-enum Effect {
-    None,
-    Forward: u8,
-    Backward: u8
-}
-
-#[generate_trait]
-impl EffectImpl of EffectTrait {
-    fn move(direction: bool, amt: u8) -> Effect{
-        if direction {
-            Effect::Forward(amt)
-        }
-        else {
-            Effect::Backward(amt)
-        }
-
-    }
-}
-
-
-
-
-

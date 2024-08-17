@@ -1,5 +1,5 @@
 use starknet::ContractAddress;
-use dojo_starter::models::position::{Effect};
+use dojo_starter::models::effect::{Effect};
 
 #[derive(Drop, Serde)]
 #[dojo::model]
@@ -9,6 +9,7 @@ struct Game {
     players: Array<ContractAddress>,
     tile_length: u8,
     turn_player: ContractAddress,
+    active_effects: Array<Effect>,
     status: Status,
     phase: TurnPhase
 }

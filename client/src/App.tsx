@@ -66,8 +66,29 @@ function App() {
     console.log(position);
     console.log(moved);
 
+    const Toolbar = () => {
+        return (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            padding: '10px',
+            background: '#333',
+            color: '#fff',
+            textAlign: 'center',
+            zIndex: 1000,
+          }}>
+            <button style={{ margin: '0 10px' }}>Button 1</button>
+            <button style={{ margin: '0 10px' }}>Button 2</button>
+            <button style={{ margin: '0 10px' }}>Button 3</button>
+          </div>
+        );
+      }
+
     return (
-        <>
+        <>  
+            <Toolbar />
             <Canvas style={{height:800, width:800}}>
                 <OrbitControls />
                 <Text position = {[0,2,2]} color={"black"}> {game? game.players?.at(0)?.toString(16) : "No Game"}</Text>

@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x6e4ccdf50299459ab22f5ea0e5298a57ff2db58cc0e77c5805c1d8c719c8ead"
-original_class_hash = "0x6e4ccdf50299459ab22f5ea0e5298a57ff2db58cc0e77c5805c1d8c719c8ead"
+class_hash = "0x322d17c0504db5b267f05ed76d805c43616e3ff519d4d928a9061db03a0c297"
+original_class_hash = "0x322d17c0504db5b267f05ed76d805c43616e3ff519d4d928a9061db03a0c297"
 abi = "manifests/dev/base/abis/models/ok-Game-57e3f47c.json"
 tag = "ok-Game"
 manifest_name = "ok-Game-57e3f47c"
@@ -23,6 +23,11 @@ key = false
 [[members]]
 name = "turn_player"
 type = "ContractAddress"
+key = false
+
+[[members]]
+name = "active_effects"
+type = "Array<Effect>"
 key = false
 
 [[members]]
