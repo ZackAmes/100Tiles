@@ -22,35 +22,7 @@ function App() {
     } = useDojo();
 
     
-    useQuerySync(toriiClient, contractComponents as any, [
-        {
-            Keys: {
-                keys: [BigInt(0).toString()],
-                models: [
-                    "ok-Game",
-                ],
-                pattern_matching: "FixedLen",
-            },
-        },
-        {
-            Keys: {
-                keys: [BigInt(0).toString(), BigInt(account?.account.address).toString()],
-                models: [
-                    "ok-Position",
-                ],
-                pattern_matching: "FixedLen",
-            },
-        },
-        {
-            Keys: {
-                keys: [BigInt(account?.account.address).toString()],
-                models: [
-                    "ok-Moved",
-                ],
-                pattern_matching: "FixedLen",
-            },
-        },
-    ]);
+    useQuerySync(toriiClient, contractComponents as any, []);
     
     console.log(account.account.address)
     const entityId = getEntityIdFromKeys([BigInt(0), BigInt(account?.account.address)]) as Entity
@@ -66,6 +38,9 @@ function App() {
     console.log(position);
     console.log(moved);
 
+
+    const [matchmaking_open, toggle_matchmaking] = useState(false);
+
     const Toolbar = () => {
         return (
           <div style={{
@@ -79,7 +54,7 @@ function App() {
             textAlign: 'center',
             zIndex: 1000,
           }}>
-            <button style={{ margin: '0 10px' }}>Button 1</button>
+            <button onClick = {() => toggle_matchmaking(!matchmaking_open)} style={{ margin: '0 10px' }}>Matchmaking</button>
             <button style={{ margin: '0 10px' }}>Button 2</button>
             <button style={{ margin: '0 10px' }}>Button 3</button>
           </div>
@@ -94,9 +69,7 @@ function App() {
                 <Text position = {[0,2,2]} color={"black"}> {game? game.players?.at(0)?.toString(16) : "No Game"}</Text>
                 
                 <Root position = {[0,0,5]} backgroundColor="red" sizeX={2} sizeY={1} flexDirection="row">
-                    <Container margin={5} backgroundColor="green" >
-                        <Matchmaking />
-                    </Container>
+                    {matchmaking_open && <Matchmaking />}
                     
                     <Container flexGrow={1} margin={5} backgroundColor="blue" />
                 </Root>

@@ -153,12 +153,12 @@ mod actions {
 
                         },
                         Target::Landing => {
-                            let active = effect.update_target(turn_player);
-                            game.active_effects.append(active);
+                         //   let active = effect.update_target(turn_player);
+                         //   game.active_effects.append(active);
                         },
                         Target::Player(addr) => {
-                            let active = effect.update_target(addr);
-                            game.active_effects.append(active);
+                         //   let active = effect.update_target(addr);
+                         //   game.active_effects.append(active);
                         }
 
                     }

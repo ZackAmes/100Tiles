@@ -4,7 +4,7 @@ use starknet::ContractAddress;
 #[dojo::model]
 struct Player {
     #[key]
-    address: ContractAddress,
-    games: Array<u32>
+    pub    address: ContractAddress,
+    pub    games: Array<u32>
 }
 

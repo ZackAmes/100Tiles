@@ -24,8 +24,8 @@ manifest_name = "dojo-base"
 [[contracts]]
 kind = "DojoContract"
 address = "0x46e6c059917c1024b714d472d4c93e53e45a151066557847fe5d0183a9186a3"
-class_hash = "0x360018297e3304ebeb919f49378f8f437a28c0bc6034c8c9e48c23295ef57bb"
-original_class_hash = "0x360018297e3304ebeb919f49378f8f437a28c0bc6034c8c9e48c23295ef57bb"
+class_hash = "0x7502cb9d3cbf44db35f3369d445b6b8a0ce104e94efcf178485c121cd3c7c21"
+original_class_hash = "0x7502cb9d3cbf44db35f3369d445b6b8a0ce104e94efcf178485c121cd3c7c21"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/ok-actions-27182f10.json"
 reads = []
@@ -38,22 +38,33 @@ writes = [
 ]
 init_calldata = []
 tag = "ok-actions"
+systems = [
+    "move",
+    "resolve_turn",
+    "set_pending_effect",
+]
 manifest_name = "ok-actions-27182f10"
 
 [[contracts]]
 kind = "DojoContract"
 address = "0x5589faeaa71c1912caa46d90c81a864f26cdb4c7f734ccaa650b47e1bad96c"
-class_hash = "0x76290aa2d63988b496363f83af7f14a4fd65e361a17b27fcc81d93882941e04"
-original_class_hash = "0x76290aa2d63988b496363f83af7f14a4fd65e361a17b27fcc81d93882941e04"
+class_hash = "0x72a1c451a1f49968b11bafa7d19df342602a385663d1a1f6c8b6dd49b851d22"
+original_class_hash = "0x72a1c451a1f49968b11bafa7d19df342602a385663d1a1f6c8b6dd49b851d22"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/ok-matchmaking-7ba13579.json"
 reads = []
 writes = [
     "ok-Game",
     "ok-Position",
+    "ok-Global",
+    "ok-Player",
 ]
 init_calldata = []
 tag = "ok-matchmaking"
+systems = [
+    "join_game",
+    "start_game",
+]
 manifest_name = "ok-matchmaking-7ba13579"
 
 [[models]]
@@ -96,6 +107,24 @@ key = false
 
 [[models]]
 kind = "DojoModel"
+class_hash = "0x3d664d76e1b030d7e2af7b7dab80e2d244a9d4bbc6725ebe88423c26fd162e3"
+original_class_hash = "0x3d664d76e1b030d7e2af7b7dab80e2d244a9d4bbc6725ebe88423c26fd162e3"
+abi = "manifests/dev/deployment/abis/models/ok-Global-6bd7f442.json"
+tag = "ok-Global"
+manifest_name = "ok-Global-6bd7f442"
+
+[[models.members]]
+name = "global_key"
+type = "u8"
+key = true
+
+[[models.members]]
+name = "pending_games"
+type = "Array<u32>"
+key = false
+
+[[models]]
+kind = "DojoModel"
 class_hash = "0x19e278ad11928dbb06799467aebf6caf3687766c3443c5f564fb57f23671bb5"
 original_class_hash = "0x19e278ad11928dbb06799467aebf6caf3687766c3443c5f564fb57f23671bb5"
 abi = "manifests/dev/deployment/abis/models/ok-Moved-5cd98501.json"
@@ -114,8 +143,8 @@ key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x52dc797642775f17c4cb0dcb016635011576a8610c9730418654d681263e51c"
-original_class_hash = "0x52dc797642775f17c4cb0dcb016635011576a8610c9730418654d681263e51c"
+class_hash = "0x19406e5aed2d1c2fa9b5197885618accb4f620e8124da8c27e6ab0a9811f645"
+original_class_hash = "0x19406e5aed2d1c2fa9b5197885618accb4f620e8124da8c27e6ab0a9811f645"
 abi = "manifests/dev/deployment/abis/models/ok-Pending-5c5c71db.json"
 tag = "ok-Pending"
 manifest_name = "ok-Pending-5c5c71db"
@@ -133,6 +162,24 @@ key = true
 [[models.members]]
 name = "effect"
 type = "Effect"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x706d2bf1abe651273cc443e41a1d846cce85e6303f174ccccdafbe8a2865b67"
+original_class_hash = "0x706d2bf1abe651273cc443e41a1d846cce85e6303f174ccccdafbe8a2865b67"
+abi = "manifests/dev/deployment/abis/models/ok-Player-38fd8f17.json"
+tag = "ok-Player"
+manifest_name = "ok-Player-38fd8f17"
+
+[[models.members]]
+name = "address"
+type = "ContractAddress"
+key = true
+
+[[models.members]]
+name = "games"
+type = "Array<u32>"
 key = false
 
 [[models]]
@@ -160,8 +207,8 @@ key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x2fb5699e10c7e793cfb9562d276225e4d564b416e8bb3a2dc3116bf0ddf2019"
-original_class_hash = "0x2fb5699e10c7e793cfb9562d276225e4d564b416e8bb3a2dc3116bf0ddf2019"
+class_hash = "0x45e70ba44841fbc28d8304b54e25ff17429734a2e55b487258fce5d76ebd30c"
+original_class_hash = "0x45e70ba44841fbc28d8304b54e25ff17429734a2e55b487258fce5d76ebd30c"
 abi = "manifests/dev/deployment/abis/models/ok-Tile-fcb463a2.json"
 tag = "ok-Tile"
 manifest_name = "ok-Tile-fcb463a2"

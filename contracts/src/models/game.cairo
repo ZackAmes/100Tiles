@@ -5,13 +5,12 @@ use dojo_starter::models::effect::{Effect};
 #[dojo::model]
 struct Game {
     #[key]
-    game_id: u32,
-    players: Array<ContractAddress>,
-    tile_length: u8,
-    turn_player: ContractAddress,
-    active_effects: Array<Effect>,
-    status: Status,
-    phase: TurnPhase
+    pub game_id: u32,
+    pub players: Array<ContractAddress>,
+    pub tile_length: u8,
+    pub  turn_player: ContractAddress,
+    pub status: Status,
+    pub phase: TurnPhase
 }
 
 #[derive(Copy, Drop, Serde, Introspect, PartialEq)]

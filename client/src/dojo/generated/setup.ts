@@ -1,4 +1,3 @@
-import { getSyncEntities } from "@dojoengine/state";
 import { DojoConfig, DojoProvider } from "@dojoengine/core";
 import * as torii from "@dojoengine/torii-client";
 import { createClientComponents } from "../createClientComponents";
@@ -6,12 +5,13 @@ import { createSystemCalls } from "../createSystemCalls";
 import { defineContractComponents } from "./models.gen";
 import { world } from "./world";
 import { setupWorld } from "./contracts.gen";
-import { Account, WeierstrassSignatureType } from "starknet";
+import { Account, ArraySignatureType } from "starknet";
 import { BurnerManager } from "@dojoengine/create-burner";
 
 export type SetupResult = Awaited<ReturnType<typeof setup>>;
 
 export async function setup({ ...config }: DojoConfig) {
+    console.log(torii.poseidonHash(["1"]));
     // torii client
     const toriiClient = await torii.createClient({
         rpcUrl: config.rpcUrl,
@@ -25,8 +25,6 @@ export async function setup({ ...config }: DojoConfig) {
 
     // create client components
     const clientComponents = createClientComponents({ contractComponents });
-
-    // fetch all existing entities from torii
 
     // create dojo provider
     const dojoProvider = new DojoProvider(config.manifest, config.rpcUrl);
@@ -62,16 +60,12 @@ export async function setup({ ...config }: DojoConfig) {
         clientComponents,
         contractComponents,
         systemCalls: createSystemCalls({ client }, clientComponents, world),
-        publish: (typedData: string, signature: WeierstrassSignatureType) => {
-            toriiClient.publishMessage(typedData, {
-                r: signature.r.toString(),
-                s: signature.s.toString(),
-            });
+        publish: (typedData: string, signature: ArraySignatureType) => {
+            toriiClient.publishMessage(typedData, signature);
         },
         config,
         dojoProvider,
         burnerManager,
         toriiClient,
-        // sync,
     };
 }

@@ -18,9 +18,12 @@ export function Matchmaking() {
 } = useDojo();
 
   let [game_id, set_game] = useState(0);
+
   const gameId = getEntityIdFromKeys([BigInt(0)]) as Entity
-  console.log(game_id);
+
   const game = useComponentValue(Game, gameId);
+
+
 
   console.log(game);
 

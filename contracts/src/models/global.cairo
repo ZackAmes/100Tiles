@@ -2,6 +2,6 @@
 #[dojo::model]
 struct Global {
     #[key]
-    global_key: u8,
-    pending_games: Array<u32>
+    pub   global_key: u8,
+    pub    pending_games: Array<u32>
 }

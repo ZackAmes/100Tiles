@@ -22,7 +22,6 @@ mod matchmaking {
             let address = get_caller_address();
             let game_id = world.uuid();
             let players = array![address];
-            let active_effects = array![];
             let status = Status::Pending;
             let phase = TurnPhase::Standby;
 
@@ -32,10 +31,10 @@ mod matchmaking {
             player.games.append(game_id);
             global.pending_games.append(game_id);
 
-            let game = Game {game_id, players, tile_length: 100, active_effects, turn_player:address, status, phase};
+            let game = Game {game_id, players, tile_length: 100, turn_player:address, status, phase};
             let position = Position {game_id, player: address, tile:1};
             
-            set!(world, (game, position, player));
+            set!(world, (global, game, position, player));
 
             game_id
         }
