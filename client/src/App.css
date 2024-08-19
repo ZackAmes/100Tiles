@@ -18,9 +18,6 @@
     filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-canvas {
-    background-color: #000;
-}
 
 @keyframes logo-spin {
     from {

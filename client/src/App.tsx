@@ -5,70 +5,60 @@ import { getEntityIdFromKeys } from "@dojoengine/utils";
 import { useDojo } from "./dojo/useDojo";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, Plane, Text, Box } from "@react-three/drei";
-import { Root, Container, Text as UIText } from "@react-three/uikit";
-import { Button } from "./components/default/button";
 import { Matchmaking } from "./ui/matchmaking";
+import { Burners } from "./ui/burners";
+import { Actions } from "./ui/actions";
+import { Toolbar } from "./ui/toolbar";
 import Tile from "./components/Tile";
 
 function App() {
     const {
         setup: {
-            systemCalls: { create_game, join_game, start_game, move },
-            clientComponents: { Position, Game, Moved },
+            systemCalls: { },
+            clientComponents: {Position, Game, Global },
             toriiClient,
             contractComponents,
         },
         account,
     } = useDojo();
 
-    
     useQuerySync(toriiClient, contractComponents as any, []);
     
     console.log(account.account.address)
     const entityId = getEntityIdFromKeys([BigInt(0), BigInt(account?.account.address)]) as Entity
     const gameId = getEntityIdFromKeys([BigInt(0)]) as Entity
-    const playerId = getEntityIdFromKeys([BigInt(account?.account.address)]) as Entity
 
     // get current component values
     const position = useComponentValue(Position, entityId);
     const game = useComponentValue(Game, gameId);
-    const moved = useComponentValue(Moved, playerId);
 
     console.log(game);
     console.log(position);
-    console.log(moved);
-
 
     const [matchmaking_open, toggle_matchmaking] = useState(false);
+    const [burners_open, toggle_burners] = useState(false);
+    const [actions_open, toggle_actions] = useState(false);
 
-    const Toolbar = () => {
-        return (
-          <div style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            padding: '10px',
-            background: '#333',
-            color: '#fff',
-            textAlign: 'center',
-            zIndex: 1000,
-          }}>
-            <button onClick = {() => toggle_matchmaking(!matchmaking_open)} style={{ margin: '0 10px' }}>Matchmaking</button>
-            <button style={{ margin: '0 10px' }}>Button 2</button>
-            <button style={{ margin: '0 10px' }}>Button 3</button>
-          </div>
-        );
+    const toggles = {
+      matchmaking: {
+        open: matchmaking_open, toggle: toggle_matchmaking
+      },
+      burners: {
+        open: burners_open, toggle: toggle_burners
+      },
+      actions: {
+        open: actions_open, toggle: toggle_actions
       }
+    }
 
     return (
         <>  
-            <Toolbar />
+            <Toolbar toggles={toggles}/>
             {matchmaking_open && <Matchmaking />}
+            {burners_open && <Burners />}
+            {actions_open && <Actions />}
 
-
-
-            <Canvas style={{height:800, width:800}}>
+            <Canvas style={{height:800, width:800, backgroundColor: '0x000'}}>
                 <OrbitControls />
                 <Text position = {[0,2,2]} color={"black"}> {game? game.players?.at(0)?.value.toString(16) : "No Game"}</Text>
 

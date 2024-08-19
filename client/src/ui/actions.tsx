@@ -4,10 +4,10 @@ import { getEntityIdFromKeys } from "@dojoengine/utils";
 import { useComponentValue } from "@dojoengine/react";
 import { Entity } from "@dojoengine/recs";
 
-interface MatchmakingProps {
+interface ActionsProps {
 
 }
-export const Matchmaking: FC<MatchmakingProps> = () => {
+export const Actions: FC<ActionsProps> = () => {
 
     const {
         setup: {
@@ -29,29 +29,27 @@ export const Matchmaking: FC<MatchmakingProps> = () => {
     return (
         <div style={{
             position: 'fixed',
-            top: 60,
+            top: 50,
             left: 0,
             width: '100%',
             padding: '10px',
             background: '#333',
             color: '#fff',
-            display: 'flex',
-            justifyContent: 'space-around',
+            textAlign: 'center',
+            justifyContent: 'space-between',
             zIndex: 1000 }}>
             <button onClick={ () => create_game(account.account)}> Create Game </button>
-            <div>
-                <select value={game_id} onChange={ (e) => set_game(Number(e.target.value))}>
-                    { games?.map( (pending_game_id, index) => {
-                        return (
-                            <option key={index} value={pending_game_id.value}> {pending_game_id.value} </option>
-                        )
-                    })}
-                </select>
-                <button onClick={() => join_game(account.account, game_id)}> Join game </button>
-            </div>
+            <select value={game_id} onChange={ (e) => set_game(Number(e.target.value))}>
+                { games?.map( (pending_game_id, index) => {
+                    return (
+                        <option key={index} value={pending_game_id.value}> {pending_game_id.value} </option>
+                    )
+                })}
+            </select>
+            <button onClick={() => join_game(account.account, game_id)}> Join game </button>
+
 
 
         </div>
     )
 }
-
