@@ -22,6 +22,7 @@
     "@latticexyz/utils": "^2.0.12",
     "@react-three/drei": "^9.111.0",
     "@react-three/uikit": "^0.4.4",
+    "@react-three/uikit-lucide": "^0.4.4",
     "@types/three": "^0.167.1",
     "ethers": "^5.7.2",
     "mobx": "^6.9.0",

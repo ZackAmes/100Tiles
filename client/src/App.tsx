@@ -8,7 +8,7 @@ import { OrbitControls, Plane, Text, Box } from "@react-three/drei";
 import { Root, Container, Text as UIText } from "@react-three/uikit";
 import { Button } from "./components/default/button";
 import { Matchmaking } from "./ui/matchmaking";
-import Tile from "./components/general/Tile";
+import Tile from "./components/Tile";
 
 function App() {
     const {
@@ -64,15 +64,13 @@ function App() {
     return (
         <>  
             <Toolbar />
+            {matchmaking_open && <Matchmaking />}
+
+
+
             <Canvas style={{height:800, width:800}}>
                 <OrbitControls />
-                <Text position = {[0,2,2]} color={"black"}> {game? game.players?.at(0)?.toString(16) : "No Game"}</Text>
-                
-                <Root position = {[0,0,5]} backgroundColor="red" sizeX={2} sizeY={1} flexDirection="row">
-                    {matchmaking_open && <Matchmaking />}
-                    
-                    <Container flexGrow={1} margin={5} backgroundColor="blue" />
-                </Root>
+                <Text position = {[0,2,2]} color={"black"}> {game? game.players?.at(0)?.value.toString(16) : "No Game"}</Text>
 
                 <Box args={[10,.1,10]} position={[0,-5,0]} rotation={[0,Math.PI/2,0]}/>
                 <Tile position={[0,-4.9, 0]} effect={{direction:true, amt:5}}/>

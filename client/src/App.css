@@ -18,6 +18,10 @@
     filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+canvas {
+    background-color: #000;
+}
+
 @keyframes logo-spin {
     from {
         transform: rotate(0deg);
@@ -37,14 +41,3 @@
     padding: 2em;
 }
 
-.read-the-docs {
-    color: #888;
-}
-
-.error {
-    color: red;
-}
-
-.success {
-    color: green;
-}
