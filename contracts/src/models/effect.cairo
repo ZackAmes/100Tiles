@@ -1,14 +1,14 @@
 use starknet::ContractAddress;
 
 #[derive(Copy, Drop, Serde, Introspect, PartialEq)]
-enum Target {
+pub enum Target {
     None,
     Landing,
     Player: ContractAddress
 }
 
 #[derive(Copy, Drop, Serde, Introspect, PartialEq)]
-enum Effect {
+pub enum Effect {
     None,
     Forward: (Target, u8),
     Backward: (Target, u8),

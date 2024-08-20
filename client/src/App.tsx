@@ -30,6 +30,9 @@ function App() {
     const [game_id, set_game_id] = useState(0);
 
 
+    let game = useComponentValue(Game, getEntityIdFromKeys([BigInt(game_id)]));
+    console.log(game);
+
     const toggles = {
       matchmaking: {
         open: matchmaking_open, toggle: toggle_matchmaking

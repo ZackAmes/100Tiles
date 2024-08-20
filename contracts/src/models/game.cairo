@@ -3,7 +3,7 @@ use dojo_starter::models::effect::{Effect};
 
 #[derive(Drop, Serde)]
 #[dojo::model]
-struct Game {
+pub struct Game {
     #[key]
     pub game_id: u32,
     pub players: Array<ContractAddress>,
@@ -14,14 +14,14 @@ struct Game {
 }
 
 #[derive(Copy, Drop, Serde, Introspect, PartialEq)]
-enum Status {
+pub enum Status {
     Pending, 
     Active,
     Completed
 }
 
 #[derive(Copy, Drop, Serde, Introspect, PartialEq)]
-enum TurnPhase {
+pub enum TurnPhase {
     Standby,
     Resolving,
     End

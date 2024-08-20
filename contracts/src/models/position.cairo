@@ -3,7 +3,7 @@ use dojo_starter::models::effect::Effect;
 
 #[derive(Copy, Drop, Serde)]
 #[dojo::model]
-struct Position {
+pub struct Position {
     #[key]
     pub game_id: u32,
     #[key]
@@ -13,7 +13,7 @@ struct Position {
 
 #[derive(Copy, Drop, Serde)]
 #[dojo::model]
-struct Pending {
+pub struct Pending {
     #[key]
     pub game_id: u32,
     #[key]
@@ -23,7 +23,7 @@ struct Pending {
 
 #[derive(Drop, Serde)]
 #[dojo::model]
-struct Tile {
+pub struct Tile {
     #[key]
     pub game_id: u32,
     #[key]

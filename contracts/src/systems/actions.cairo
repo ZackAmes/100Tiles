@@ -65,12 +65,15 @@ mod actions {
 
             if tile.effect == Effect::None {
                 let pending = get!(world, (game_id, player), (Pending));
+                assert!(pending.effect != Effect::None, "Must set pending effect");
                 tile.effect = pending.effect;
             }
             else {
    
                 self.get_tile_result(ref world, game_id, tile.number);
             }
+
+            //TODO: set turnplayer to next player
 
             set!(world, (tile, position));
 
