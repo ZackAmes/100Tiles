@@ -39,7 +39,8 @@ export const Toolbar: FC<ToolbarProps> = ( {toggles: { matchmaking, burners, act
         }
     }
   
-    let addr = account.account.address;
+    let addr = account.account.address.toString(16).slice(2);
+    console.log(addr);
     return (
     <div style={{
         position: 'fixed',

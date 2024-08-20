@@ -27,6 +27,7 @@ export const Actions: FC<ActionsProps> = ({game_id, set_game_id}) => {
 
     let is_turn_player = game?.turn_player == BigInt(account.account.address);
 
+    console.log(game?.turn_player.toString(16))
     return (
         <div style={{
             position: 'fixed',

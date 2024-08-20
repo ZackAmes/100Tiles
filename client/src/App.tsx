@@ -52,7 +52,7 @@ function App() {
             {burners_open && <Burners />}
             {actions_open && <Actions game_id={game_id} set_game_id={set_game_id} />}
 
-            <Canvas style={{justifySelf: 'center', height:800, width:800}}>
+            <Canvas style={{height:800, width:800}}>
                 <OrbitControls />
                 <ambientLight />
                 <GameRender game_id={game_id} />
