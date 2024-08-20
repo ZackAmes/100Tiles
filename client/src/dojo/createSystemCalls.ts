@@ -43,6 +43,44 @@ export function createSystemCalls(
         }
     };
 
+    const resolve_turn = async (account: AccountInterface, game_id: number) => {
+        const entityId = getEntityIdFromKeys([
+            BigInt(account.address),
+        ]) as Entity;
+
+        // Update the state before the transaction
+        const positionId = uuid();
+
+        try {
+            await client.actions.resolve_turn({
+                account,
+                game_id
+            });
+
+        } catch (e) {
+            console.log(e);
+            Position.removeOverride(positionId);
+        } finally {
+            Position.removeOverride(positionId);
+        }
+    };
+
+    const set_pending = async (account: AccountInterface, game_id: number, tile_id: number, amt: number) => {
+        
+        try {
+            await client.actions.set_pending_effect({
+                account,
+                game_id,
+                tile_id,
+                amt
+            });
+
+        } catch (e) {
+            console.log(e);
+        } finally {
+        }
+    };
+
     const join_game = async (account: AccountInterface, game_id: number) => {
         const entityId = getEntityIdFromKeys([
             BigInt(account.address),
@@ -76,6 +114,7 @@ export function createSystemCalls(
         }
     }
     const start_game = async (account: AccountInterface, game_id: number) => {
+        console.log("starting game " + game_id)
         try {
             await client.matchmaking.start_game({
                 account,
@@ -92,5 +131,7 @@ export function createSystemCalls(
         join_game,
         start_game,
         move,
+        set_pending,
+        resolve_turn
     };
 }

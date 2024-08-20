@@ -172,8 +172,8 @@ export async function setupWorld(provider: DojoProvider) {
                         contractName: contract_name,
                         entrypoint: "set_pending_effect",
                         calldata: [props.game_id,
-                props.effect_id,
-                props.amt],
+                                    props.effect_id,
+                                    props.amt],
                     },
                     "ok"
                 );

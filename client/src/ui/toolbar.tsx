@@ -20,6 +20,7 @@ interface ToolbarProps {
 export const Toolbar: FC<ToolbarProps> = ( {toggles: { matchmaking, burners, actions}}) => {
 
     const { account } = useDojo();
+    
     const toggle = (option: String) => {
         if(option=="matchmaking") {
           matchmaking.toggle(!matchmaking.open);
@@ -36,7 +37,7 @@ export const Toolbar: FC<ToolbarProps> = ( {toggles: { matchmaking, burners, act
           actions.toggle(false);
           burners.toggle(!burners.open);
         }
-      }
+    }
   
     let addr = account.account.address;
     return (
@@ -50,7 +51,10 @@ export const Toolbar: FC<ToolbarProps> = ( {toggles: { matchmaking, burners, act
         color: '#fff',
         textAlign: 'center',
         zIndex: 1000,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     }}>
         <span>Signer: </span>
         <img style={{margin: '0 10px'}} height={"30px"} width={"30px"} src={blo(`0x${addr}`)}/>

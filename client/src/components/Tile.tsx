@@ -7,7 +7,7 @@ interface TileProps {
 
 }
 
-const Tile: FC<TileProps> = ({position, effect}) => {
+export const Tile: FC<TileProps> = ({position, effect}) => {
 
     let color = effect ? (effect.direction ? "green" : "red") : "white"
 
@@ -25,4 +25,3 @@ const Tile: FC<TileProps> = ({position, effect}) => {
     )
 }
 
-export default Tile;
