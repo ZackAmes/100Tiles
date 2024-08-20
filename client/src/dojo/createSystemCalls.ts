@@ -65,13 +65,13 @@ export function createSystemCalls(
         }
     };
 
-    const set_pending = async (account: AccountInterface, game_id: number, tile_id: number, amt: number) => {
+    const set_pending = async (account: AccountInterface, game_id: number, effect_id: number, amt: number) => {
         
         try {
             await client.actions.set_pending_effect({
                 account,
                 game_id,
-                tile_id,
+                effect_id,
                 amt
             });
 

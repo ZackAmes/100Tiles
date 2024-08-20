@@ -12,6 +12,7 @@ export async function setupWorld(provider: DojoProvider) {
     // System definitions for `ok-actions` contract
     function actions() {
         const contract_name = "actions";
+        const NAMESPACE = "ok";
 
         
         // Call the `world` system with the specified Account and calldata
@@ -76,15 +77,16 @@ export async function setupWorld(provider: DojoProvider) {
     
         // Call the `set_pending_effect` system with the specified Account and calldata
         const set_pending_effect = async (props: { account: Account, game_id: number, effect_id: number, amt: number }) => {
+            
+            console.log(props);
+            console.log([props.game_id, props.effect_id, props.amt])
             try {
                 return await provider.execute(
                     props.account,
                     {
                         contractName: contract_name,
                         entrypoint: "set_pending_effect",
-                        calldata: [props.game_id,
-                props.effect_id,
-                props.amt],
+                        calldata: [props.game_id, props.effect_id, props.amt],
                     },
                     "ok"
                 );

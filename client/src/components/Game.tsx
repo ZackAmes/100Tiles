@@ -24,7 +24,7 @@ export const Game: FC<GameProps> = ({game_id}) => {
         console.log(effect)
 
         return (
-            <TileRender position={[0,-4.9, index]} />
+            <TileRender position={[0,-4.5, index]} />
         )
     })
 
@@ -32,7 +32,7 @@ export const Game: FC<GameProps> = ({game_id}) => {
         <group position={[0,0,0]}>
 
             <Box args={[10,.1,100]} position={[0,-5,0]} rotation={[0,Math.PI/2,0]}>
-                <meshToonMaterial color="green"/>
+                <meshToonMaterial color="blue"/>
             </Box>
 
 
